@@ -1,0 +1,125 @@
+specVersion: 0.0.4
+schema:
+  file: ./schema.graphql
+dataSources:
+  - kind: ethereum
+    name: BHeroToken
+    network: mumbai
+    source:
+      address: "0xfc82713E52BBeD718f848871fbD2535536eC7277"
+      abi: BHeroToken
+      startBlock: 26956084
+    mapping:
+      kind: ethereum/events
+      apiVersion: 0.0.5
+      language: wasm/assemblyscript
+      entities:
+        - AdminChanged
+        - Approval
+        - ApprovalForAll
+        - BeaconUpgraded
+        - Initialized
+        - Paused
+        - RoleAdminChanged
+        - RoleGranted
+        - RoleRevoked
+        - TokenAbilityRandomized
+        - TokenChanged
+        - TokenCreateRequested
+        - TokenCreated
+        - TokenRandomRequestCreated
+        - TokenUpgraded
+        - Transfer
+        - Unpaused
+        - Upgraded
+      abis:
+        - name: BHeroToken
+          file: ./abis/BHeroToken.json
+      eventHandlers:
+        - event: AdminChanged(address,address)
+          handler: handleAdminChanged
+        - event: Approval(indexed address,indexed address,indexed uint256)
+          handler: handleApproval
+        - event: ApprovalForAll(indexed address,indexed address,bool)
+          handler: handleApprovalForAll
+        - event: BeaconUpgraded(indexed address)
+          handler: handleBeaconUpgraded
+        - event: Initialized(uint8)
+          handler: handleInitialized
+        - event: Paused(address)
+          handler: handlePaused
+        - event: RoleAdminChanged(indexed bytes32,indexed bytes32,indexed bytes32)
+          handler: handleRoleAdminChanged
+        - event: RoleGranted(indexed bytes32,indexed address,indexed address)
+          handler: handleRoleGranted
+        - event: RoleRevoked(indexed bytes32,indexed address,indexed address)
+          handler: handleRoleRevoked
+        - event: TokenAbilityRandomized(address,uint256)
+          handler: handleTokenAbilityRandomized
+        - event: TokenChanged(address,uint256,uint256,uint256)
+          handler: handleTokenChanged
+        - event: TokenCreateRequested(indexed address,indexed uint256,uint16,uint8,uint256)
+          handler: handleTokenCreateRequested
+        - event: TokenCreated(address,uint256,uint256)
+          handler: handleTokenCreated
+        - event: TokenRandomRequestCreated(uint256,uint256,uint256)
+          handler: handleTokenRandomRequestCreated
+        - event: TokenUpgraded(address,uint256,uint256)
+          handler: handleTokenUpgraded
+        - event: Transfer(indexed address,indexed address,indexed uint256)
+          handler: handleTransfer
+        - event: Unpaused(address)
+          handler: handleUnpaused
+        - event: Upgraded(indexed address)
+          handler: handleUpgraded
+      file: ./src/b-hero-token.ts
+  - kind: ethereum
+    name: BHeroS
+    network: mumbai
+    source:
+      address: "0xB2175f6E38DC3F520CeA0B921903b5d95AfA9D96"
+      abi: BHeroS
+      startBlock: 26956547
+    mapping:
+      kind: ethereum/events
+      apiVersion: 0.0.5
+      language: wasm/assemblyscript
+      entities:
+        - AdminChanged
+        - BeaconUpgraded
+        - BurnResetShield
+        - CreateRock
+        - Initialized
+        - ResetShieldHeroS
+        - RoleAdminChanged
+        - RoleGranted
+        - RoleRevoked
+        - TokenCreateRequested
+        - Upgraded
+      abis:
+        - name: BHeroS
+          file: ./abis/BHeroS.json
+      eventHandlers:
+        - event: AdminChanged(address,address)
+          handler: handleAdminChanged
+        - event: BeaconUpgraded(indexed address)
+          handler: handleBeaconUpgraded
+        - event: BurnResetShield(indexed address,uint256,uint256[])
+          handler: handleBurnResetShield
+        - event: CreateRock(indexed address,uint256,uint256[])
+          handler: handleCreateRock
+        - event: Initialized(uint8)
+          handler: handleInitialized
+        - event: ResetShieldHeroS(indexed address,uint256,uint256)
+          handler: handleResetShieldHeroS
+        - event: RoleAdminChanged(indexed bytes32,indexed bytes32,indexed bytes32)
+          handler: handleRoleAdminChanged
+        - event: RoleGranted(indexed bytes32,indexed address,indexed address)
+          handler: handleRoleGranted
+        - event: RoleRevoked(indexed bytes32,indexed address,indexed address)
+          handler: handleRoleRevoked
+        - event: TokenCreateRequested(address,uint256)
+          handler: handleTokenCreateRequested
+        - event: Upgraded(indexed address)
+          handler: handleUpgraded
+      file: ./src/b-hero-s.ts

@@ -1,0 +1,13 @@
+type CreateToken @entity {
+  id: ID!
+  to: Bytes!
+  tokenId: BigInt!
+  details: BigInt!
+}
+
+type ResetShieldHeroSTable @entity {
+  id: ID!
+  owner: Bytes!
+  idHeroS: BigInt!
+  numRock: BigInt!
+}
